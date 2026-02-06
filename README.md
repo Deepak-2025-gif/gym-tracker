@@ -265,8 +265,7 @@ This is **expected behavior** - each profile has its own isolated workout logs.
 
 ## Support
 
-For issues or feature requests, refer to the codebase at:
-`C:\Users\Deepak\Documents\Claude Projects\Gym tracker project`
+For issues or feature requests, email deepakjave@gmail.com
 
 ---
 

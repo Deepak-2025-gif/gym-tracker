@@ -58,7 +58,10 @@ class _AddCustomExerciseScreenState extends State<AddCustomExerciseScreen> {
 
     return Scaffold(
       appBar: AppBar(
-        title: Text(isEditing ? 'Edit Exercise' : 'Add Exercise'),
+        title: Text(
+          isEditing ? 'Edit Exercise' : 'Add Exercise',
+          style: const TextStyle(color: Colors.white),
+        ),
         backgroundColor: Colors.deepPurple,
       ),
       body: SingleChildScrollView(

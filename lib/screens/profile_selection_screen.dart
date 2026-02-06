@@ -105,7 +105,10 @@ class _ProfileSelectionScreenState extends State<ProfileSelectionScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Gym Tracker - Profiles'),
+        title: const Text(
+          'Gym Tracker - Profiles',
+          style: TextStyle(color: Colors.white),
+        ),
         backgroundColor: Colors.deepPurple,
         elevation: 0,
       ),

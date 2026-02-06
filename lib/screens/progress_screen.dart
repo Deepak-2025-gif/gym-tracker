@@ -47,7 +47,10 @@ class _ProgressScreenState extends State<ProgressScreen> {
 
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Progress'),
+        title: const Text(
+          'Progress',
+          style: TextStyle(color: Colors.white),
+        ),
         elevation: 0,
       ),
       body: Column(
@@ -93,15 +96,14 @@ class _ProgressScreenState extends State<ProgressScreen> {
     final exerciseProvider = context.read<ExerciseProvider>();
     final progressProvider = context.read<ProgressProvider>();
 
-    // Get exercises
-    List<Exercise> exercises = [];
-    if (_selectedCategory == 'All') {
-      exercises = exerciseProvider.allExercises;
-    } else {
-      final category = exerciseProvider.categories
-        .firstWhere((c) => c.name == _selectedCategory);
-      exercises = exerciseProvider.getExercisesByCategory(category.id) ?? [];
-    }
+    // Get exercises based on selected category
+    final allExercises = exerciseProvider.getAllExercises();
+    final exercises = _selectedCategory == 'All'
+        ? allExercises
+        : allExercises
+            .where((e) => exerciseProvider.categories
+                .any((c) => c.id == e.categoryId && c.name == _selectedCategory))
+            .toList();
 
     if (exercises.isEmpty) {
       return const Center(
@@ -180,15 +182,3 @@ class _ProgressScreenState extends State<ProgressScreen> {
   }
 }
 
-extension ExerciseProviderExtension on ExerciseProvider {
-  List<Exercise> get allExercises {
-    final all = <Exercise>[];
-    for (final category in categories) {
-      final exercises = getExercisesByCategory(category.id);
-      if (exercises != null) {
-        all.addAll(exercises);
-      }
-    }
-    return all;
-  }
-}

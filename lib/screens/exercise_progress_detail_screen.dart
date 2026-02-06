@@ -34,14 +34,22 @@ class _ExerciseProgressDetailScreenState
 
     if (currentProfile == null) {
       return Scaffold(
-        appBar: AppBar(title: const Text('Exercise Progress')),
+        appBar: AppBar(
+          title: const Text(
+            'Exercise Progress',
+            style: TextStyle(color: Colors.white),
+          ),
+        ),
         body: const Center(child: Text('No profile selected')),
       );
     }
 
     return Scaffold(
       appBar: AppBar(
-        title: Text('${widget.exerciseName} Progress'),
+        title: Text(
+          '${widget.exerciseName} Progress',
+          style: const TextStyle(color: Colors.white),
+        ),
         elevation: 0,
       ),
       body: SingleChildScrollView(
@@ -133,7 +141,7 @@ class _ExerciseProgressDetailScreenState
                           ),
                           borderData: FlBorderData(show: true),
                           lineBarsData: [
-                            LineBarData(
+                            LineChartBarData(
                               spots: snapshot.data as List<FlSpot>,
                               isCurved: true,
                               barWidth: 2,
@@ -413,7 +421,7 @@ class _ExerciseProgressDetailScreenState
       return data
         .asMap()
         .entries
-        .map((entry) => FlSpot(entry.key.toDouble(), entry.value.value))
+        .map((e) => FlSpot(e.key.toDouble(), e.value.value))
         .toList();
     } else if (_selectedMetric == 'reps') {
       final data = await provider.getRepsProgression(
@@ -424,7 +432,7 @@ class _ExerciseProgressDetailScreenState
       return data
         .asMap()
         .entries
-        .map((entry) => FlSpot(entry.key.toDouble(), entry.value.value))
+        .map((e) => FlSpot(e.key.toDouble(), e.value.value.toDouble()))
         .toList();
     } else {
       final data = await provider.getVolumeProgression(
@@ -435,7 +443,7 @@ class _ExerciseProgressDetailScreenState
       return data
         .asMap()
         .entries
-        .map((entry) => FlSpot(entry.key.toDouble(), entry.value.value))
+        .map((e) => FlSpot(e.key.toDouble(), e.value.value))
         .toList();
     }
   }

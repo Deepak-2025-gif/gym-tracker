@@ -31,7 +31,10 @@ class _CategoryScreenState extends State<CategoryScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text(widget.category.name),
+        title: Text(
+          widget.category.name,
+          style: const TextStyle(color: Colors.white),
+        ),
         backgroundColor: Colors.deepPurple,
         elevation: 0,
       ),

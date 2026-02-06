@@ -97,4 +97,15 @@ class ExerciseProvider extends ChangeNotifier {
         .where((e) => e.name.toLowerCase().contains(query.toLowerCase()))
         .toList();
   }
+
+  List<Exercise> getAllExercises() {
+    final all = <Exercise>[];
+    for (final category in _categories) {
+      final exercises = _exercisesByCategory[category.id];
+      if (exercises != null) {
+        all.addAll(exercises);
+      }
+    }
+    return all;
+  }
 }

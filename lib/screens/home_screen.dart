@@ -22,11 +22,11 @@ class HomeScreen extends StatelessWidget {
               children: [
                 const Text(
                   'Gym Tracker',
-                  style: TextStyle(fontSize: 20),
+                  style: TextStyle(fontSize: 20, color: Colors.white),
                 ),
                 Text(
                   'Profile: ${profileProvider.currentProfile?.name ?? 'No Profile'}',
-                  style: const TextStyle(fontSize: 12),
+                  style: const TextStyle(fontSize: 12, color: Colors.white),
                 ),
               ],
             );
